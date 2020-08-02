@@ -3,4 +3,5 @@ lxml
 beautifulsoup4
 numpy
 pandas==1.0
+matplotlib
 RISE==5.6
