@@ -12,6 +12,7 @@
 
 ## 課程投影片
 
+- [簡介](00-about.slides.html)
 - [網頁資料擷取](01-web-scraping-101.slides.html)
 - [NumPy 101](02-numpy-101.slides.html)
 - [Pandas 101](03-pandas-101.slides.html)
