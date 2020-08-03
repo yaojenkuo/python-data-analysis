@@ -16,12 +16,18 @@ class TestWebScraping(unittest.TestCase):
         self.assertEqual(find_endgame_genre("https://www.imdb.com/title/tt4154796"), ['Action', 'Adventure', 'Drama'])
     def test_find_endgame_cast(self):
         self.assertEqual(find_endgame_cast("https://www.imdb.com/title/tt4154796"), ['Robert Downey Jr.', 'Chris Evans', 'Mark Ruffalo', 'Chris Hemsworth', 'Scarlett Johansson', 'Jeremy Renner', 'Don Cheadle', 'Paul Rudd', 'Benedict Cumberbatch', 'Chadwick Boseman', 'Brie Larson', 'Tom Holland', 'Karen Gillan', 'Zoe Saldana', 'Evangeline Lilly'])
-    def test_get_movie_data(self):
-        movie_data = get_movie_data("https://www.imdb.com/title/tt4154796")
-        self.assertEqual(movie_data["movieTitle"], 'Avengers: Endgame(2019)')
+    def test_get_movie_data_from_url(self):
+        movie_data = get_movie_data_from_url("https://www.imdb.com/title/tt4154796")
         self.assertEqual(movie_data["moviePoster"], 'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_UX182_CR0,0,182,268_AL_.jpg')
         self.assertEqual(movie_data["movieGenre"], ['Action', 'Adventure', 'Drama'])
         self.assertEqual(movie_data["movieCast"], ['Robert Downey Jr.', 'Chris Evans', 'Mark Ruffalo', 'Chris Hemsworth', 'Scarlett Johansson', 'Jeremy Renner', 'Don Cheadle', 'Paul Rudd', 'Benedict Cumberbatch', 'Chadwick Boseman', 'Brie Larson', 'Tom Holland', 'Karen Gillan', 'Zoe Saldana', 'Evangeline Lilly'])
+    def test_get_movie_data_from_title(self):
+        movie_data = get_movie_data_from_title("Avengers: Endgame (2019)")
+        self.assertEqual(movie_data["moviePoster"], 'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_UX182_CR0,0,182,268_AL_.jpg')
+        self.assertEqual(movie_data["movieGenre"], ['Action', 'Adventure', 'Drama'])
+        self.assertEqual(movie_data["movieCast"], ['Robert Downey Jr.', 'Chris Evans', 'Mark Ruffalo', 'Chris Hemsworth', 'Scarlett Johansson', 'Jeremy Renner', 'Don Cheadle', 'Paul Rudd', 'Benedict Cumberbatch', 'Chadwick Boseman', 'Brie Larson', 'Tom Holland', 'Karen Gillan', 'Zoe Saldana', 'Evangeline Lilly'])
+    def test_get_ca_movie_titles(self):
+        self.assertIsInstance(get_ca_movie_titles(), list)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestWebScraping)
 runner = unittest.TextTestRunner(verbosity=2)
