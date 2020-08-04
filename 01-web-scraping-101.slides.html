@@ -13219,7 +13219,6 @@ a.anchor-link {
 <li>擷取 HTML 格式網頁資料</li>
 <li>瀏覽器自動化</li>
 <li>延伸閱讀</li>
-<li>隨堂練習</li>
 </ul>
 
 </div>
@@ -14732,14 +14731,6 @@ a.anchor-link {
 <span class="sd">    &gt;&gt;&gt; number_of_nba_teams(&quot;http://data.nba.net/prod/v2/2019/teams.json&quot;)</span>
 <span class="sd">    30</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">)</span>
-    <span class="n">response_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">teams</span> <span class="o">=</span> <span class="n">response_json</span><span class="p">[</span><span class="s2">&quot;league&quot;</span><span class="p">][</span><span class="s2">&quot;standard&quot;</span><span class="p">]</span>
-    <span class="n">n_nba_teams</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">teams</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;isNBAFranchise&quot;</span><span class="p">]:</span>
-            <span class="n">n_nba_teams</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">n_nba_teams</span>
 </pre></div>
 
     </div>
@@ -14767,18 +14758,6 @@ a.anchor-link {
 <span class="sd">    &gt;&gt;&gt; atlantic_southwest_teams[&#39;Southwest&#39;]</span>
 <span class="sd">    [&#39;Dallas Mavericks&#39;, &#39;Houston Rockets&#39;, &#39;Memphis Grizzlies&#39;, &#39;New Orleans Pelicans&#39;, &#39;San Antonio Spurs&#39;]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">)</span>
-    <span class="n">response_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">teams</span> <span class="o">=</span> <span class="n">response_json</span><span class="p">[</span><span class="s2">&quot;league&quot;</span><span class="p">][</span><span class="s2">&quot;standard&quot;</span><span class="p">]</span>
-    <span class="n">team_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">teams</span><span class="p">:</span>
-        <span class="n">div</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;divName&quot;</span><span class="p">]</span>
-        <span class="n">full_name</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;fullName&quot;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">team_dict</span><span class="p">:</span>
-            <span class="n">team_dict</span><span class="p">[</span><span class="n">div</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">full_name</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">team_dict</span><span class="p">[</span><span class="n">div</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">full_name</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">team_dict</span>
 </pre></div>
 
     </div>
@@ -14808,41 +14787,6 @@ a.anchor-link {
 <span class="sd">    &gt;&gt;&gt; tpe_711_stores[&quot;大安區&quot;][0]</span>
 <span class="sd">    {&#39;POIID&#39;: &#39;153319&#39;, &#39;POIName&#39;: &#39;大台&#39;, &#39;Longitude&#39;: 121.53261437826, &#39;Latitude&#39;: 25.0179598345753, &#39;Address&#39;: &#39;台北市大安區羅斯福路三段283巷14弄16號1樓&#39;}</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">form_data</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;commandid&quot;</span><span class="p">:</span> <span class="s2">&quot;GetTown&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cityid&quot;</span><span class="p">:</span> <span class="s2">&quot;01&quot;</span>
-    <span class="p">}</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">form_data</span><span class="p">)</span>
-    <span class="n">file</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-    <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-    <span class="n">town_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//TownName&quot;</span><span class="p">)]</span>
-    <span class="n">tpe_711_stores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">town</span> <span class="ow">in</span> <span class="n">town_names</span><span class="p">:</span>
-        <span class="n">form_data</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;commandid&quot;</span><span class="p">:</span> <span class="s2">&quot;SearchStore&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;台北市&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;town&quot;</span><span class="p">:</span> <span class="n">town</span>
-        <span class="p">}</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">form_data</span><span class="p">)</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-        <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-        <span class="n">poi_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//POIID&quot;</span><span class="p">)]</span>
-        <span class="n">poi_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//POIName&quot;</span><span class="p">)]</span>
-        <span class="n">lons</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="o">/</span><span class="mi">1000000</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//X&quot;</span><span class="p">)]</span>
-        <span class="n">lats</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="o">/</span><span class="mi">1000000</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//Y&quot;</span><span class="p">)]</span>
-        <span class="n">adds</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//Address&quot;</span><span class="p">)]</span>
-        <span class="n">tpe_711_stores</span><span class="p">[</span><span class="n">town</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">poi_id</span><span class="p">,</span> <span class="n">poi_name</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">add</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">poi_ids</span><span class="p">,</span> <span class="n">poi_names</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">adds</span><span class="p">):</span>
-            <span class="n">store_info</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;POIID&quot;</span><span class="p">:</span> <span class="n">poi_id</span><span class="p">,</span>
-                <span class="s2">&quot;POIName&quot;</span><span class="p">:</span> <span class="n">poi_name</span><span class="p">,</span>
-                <span class="s2">&quot;Longitude&quot;</span><span class="p">:</span> <span class="n">lon</span><span class="p">,</span>
-                <span class="s2">&quot;Latitude&quot;</span><span class="p">:</span> <span class="n">lat</span><span class="p">,</span>
-                <span class="s2">&quot;Address&quot;</span><span class="p">:</span> <span class="n">add</span>
-            <span class="p">}</span>
-            <span class="n">tpe_711_stores</span><span class="p">[</span><span class="n">town</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">store_info</span><span class="p">)</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">tpe_711_stores</span>
 </pre></div>
 
     </div>
@@ -14867,12 +14811,6 @@ a.anchor-link {
 <span class="sd">    &gt;&gt;&gt; find_endgame_genre(&quot;https://www.imdb.com/title/tt4154796&quot;)</span>
 <span class="sd">    [&#39;Action&#39;, &#39;Adventure&#39;, &#39;Drama&#39;]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">)</span>
-    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">elems</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.subtext a&quot;</span><span class="p">)</span>
-    <span class="n">genre</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">]</span>
-    <span class="n">genre</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">genre</span>
 </pre></div>
 
     </div>
@@ -14897,11 +14835,6 @@ a.anchor-link {
 <span class="sd">    &gt;&gt;&gt; find_endgame_cast(&quot;https://www.imdb.com/title/tt4154796&quot;)</span>
 <span class="sd">    [&#39;Robert Downey Jr.&#39;, &#39;Chris Evans&#39;, &#39;Mark Ruffalo&#39;, &#39;Chris Hemsworth&#39;, &#39;Scarlett Johansson&#39;, &#39;Jeremy Renner&#39;, &#39;Don Cheadle&#39;, &#39;Paul Rudd&#39;, &#39;Benedict Cumberbatch&#39;, &#39;Chadwick Boseman&#39;, &#39;Brie Larson&#39;, &#39;Tom Holland&#39;, &#39;Karen Gillan&#39;, &#39;Zoe Saldana&#39;, &#39;Evangeline Lilly&#39;]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">)</span>
-    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">elems</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.primary_photo+ td a&quot;</span><span class="p">)</span>
-    <span class="n">cast</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">cast</span>
 </pre></div>
 
     </div>
@@ -14931,25 +14864,6 @@ a.anchor-link {
 <span class="sd">    &gt;&gt;&gt; movie_data[&quot;movieCast&quot;]</span>
 <span class="sd">    [&#39;Robert Downey Jr.&#39;, &#39;Chris Evans&#39;, &#39;Mark Ruffalo&#39;, &#39;Chris Hemsworth&#39;, &#39;Scarlett Johansson&#39;, &#39;Jeremy Renner&#39;, &#39;Don Cheadle&#39;, &#39;Paul Rudd&#39;, &#39;Benedict Cumberbatch&#39;, &#39;Chadwick Boseman&#39;, &#39;Brie Larson&#39;, &#39;Tom Holland&#39;, &#39;Karen Gillan&#39;, &#39;Zoe Saldana&#39;, &#39;Evangeline Lilly&#39;]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">request_headers</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;accept-language&quot;</span><span class="p">:</span> <span class="s2">&quot;en,en-US;q=0.9&quot;</span>
-    <span class="p">}</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">request_headers</span><span class="p">)</span>
-    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">movie_title</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xa0</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">movie_rating</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;strong span&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">movie_poster</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.poster img&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">)</span>
-    <span class="n">movie_genre</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.subtext a&quot;</span><span class="p">)]</span>
-    <span class="n">movie_genre</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-    <span class="n">movie_cast</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.primary_photo+ td a&quot;</span><span class="p">)]</span>
-    <span class="n">movie_data</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;movieTitle&#39;</span><span class="p">:</span> <span class="n">movie_title</span><span class="p">,</span>
-        <span class="s1">&#39;movieRating&#39;</span><span class="p">:</span> <span class="n">movie_rating</span><span class="p">,</span>
-        <span class="s1">&#39;moviePoster&#39;</span><span class="p">:</span> <span class="n">movie_poster</span><span class="p">,</span>
-        <span class="s1">&#39;movieGenre&#39;</span><span class="p">:</span> <span class="n">movie_genre</span><span class="p">,</span>
-        <span class="s1">&#39;movieCast&#39;</span><span class="p">:</span> <span class="n">movie_cast</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">movie_data</span>
 </pre></div>
 
     </div>
@@ -14979,36 +14893,6 @@ a.anchor-link {
 <span class="sd">    &gt;&gt;&gt; movie_data[&quot;movieCast&quot;]</span>
 <span class="sd">    [&#39;Robert Downey Jr.&#39;, &#39;Chris Evans&#39;, &#39;Mark Ruffalo&#39;, &#39;Chris Hemsworth&#39;, &#39;Scarlett Johansson&#39;, &#39;Jeremy Renner&#39;, &#39;Don Cheadle&#39;, &#39;Paul Rudd&#39;, &#39;Benedict Cumberbatch&#39;, &#39;Chadwick Boseman&#39;, &#39;Brie Larson&#39;, &#39;Tom Holland&#39;, &#39;Karen Gillan&#39;, &#39;Zoe Saldana&#39;, &#39;Evangeline Lilly&#39;]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">query_string_parameters</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;q&#39;</span><span class="p">:</span> <span class="n">movie_title</span><span class="p">,</span>
-        <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="s1">&#39;tt&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;ttype&#39;</span><span class="p">:</span> <span class="s1">&#39;ft&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;ref_&#39;</span><span class="p">:</span> <span class="s1">&#39;fn_ft&#39;</span>
-    <span class="p">}</span>
-    <span class="n">request_headers</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;accept-language&quot;</span><span class="p">:</span> <span class="s2">&quot;en,en-US;q=0.9&quot;</span>
-    <span class="p">}</span>
-    <span class="n">request_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.imdb.com/find&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">query_string_parameters</span><span class="p">)</span>
-    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">search_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.result_text a&quot;</span><span class="p">)]</span>
-    <span class="n">movie_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.imdb.com&quot;</span> <span class="o">+</span> <span class="n">search_results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">movie_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">request_headers</span><span class="p">)</span>
-    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">movie_title</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xa0</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">movie_rating</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;strong span&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">movie_poster</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.poster img&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">)</span>
-    <span class="n">movie_genre</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.subtext a&quot;</span><span class="p">)]</span>
-    <span class="n">movie_genre</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-    <span class="n">movie_cast</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.primary_photo+ td a&quot;</span><span class="p">)]</span>
-    <span class="n">movie_data</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;movieTitle&#39;</span><span class="p">:</span> <span class="n">movie_title</span><span class="p">,</span>
-        <span class="s1">&#39;movieRating&#39;</span><span class="p">:</span> <span class="n">movie_rating</span><span class="p">,</span>
-        <span class="s1">&#39;moviePoster&#39;</span><span class="p">:</span> <span class="n">movie_poster</span><span class="p">,</span>
-        <span class="s1">&#39;movieGenre&#39;</span><span class="p">:</span> <span class="n">movie_genre</span><span class="p">,</span>
-        <span class="s1">&#39;movieCast&#39;</span><span class="p">:</span> <span class="n">movie_cast</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">movie_data</span>
 </pre></div>
 
     </div>
@@ -15035,14 +14919,6 @@ a.anchor-link {
 <span class="sd">    &gt;&gt;&gt; type(ca_movie_titles)</span>
 <span class="sd">    list</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ca_movie_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;http://www.fantasy-sky.com/ContentList.aspx?section=002&amp;category=0020</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
-    <span class="n">ca_movie_titles</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">ca_url</span> <span class="ow">in</span> <span class="n">ca_movie_urls</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ca_url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;COOKIE_LANGUAGE&#39;</span><span class="p">:</span> <span class="s1">&#39;en&#39;</span><span class="p">})</span>
-        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="n">movie_titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.movies-name&quot;</span><span class="p">)]</span>
-        <span class="n">ca_movie_titles</span> <span class="o">+=</span> <span class="n">movie_titles</span>
-    <span class="k">return</span> <span class="n">ca_movie_titles</span>
 </pre></div>
 
     </div>
@@ -15067,23 +14943,6 @@ a.anchor-link {
 <span class="sd">    &gt;&gt;&gt; find_highest_rated_movies()</span>
 <span class="sd">    [&#39;Inception&#39;]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ca_movie_titles</span> <span class="o">=</span> <span class="n">get_ca_movie_titles</span><span class="p">()</span>
-    <span class="n">movie_ratings</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">movie_title</span> <span class="ow">in</span> <span class="n">ca_movie_titles</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正在擷取 </span><span class="si">{}</span><span class="s2"> 的評等&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">movie_title</span><span class="p">))</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">movie_data</span> <span class="o">=</span> <span class="n">get_movie_data_from_title</span><span class="p">(</span><span class="n">movie_title</span><span class="p">)</span>
-            <span class="n">movie_rating</span> <span class="o">=</span> <span class="n">movie_data</span><span class="p">[</span><span class="s2">&quot;movieRating&quot;</span><span class="p">]</span>
-            <span class="n">movie_ratings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">movie_rating</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;在擷取 </span><span class="si">{}</span><span class="s2"> 的資訊時產生錯誤&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">movie_title</span><span class="p">))</span>
-            <span class="n">movie_ratings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">max_movie_rating</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">movie_ratings</span><span class="p">)</span>
-    <span class="n">highest_rated_movies</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">rating</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">movie_ratings</span><span class="p">,</span> <span class="n">ca_movie_titles</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">rating</span> <span class="o">==</span> <span class="n">max_movie_rating</span><span class="p">:</span>
-            <span class="n">highest_rated_movies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">highest_rated_movies</span>
 </pre></div>
 
     </div>
