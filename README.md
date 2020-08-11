@@ -16,8 +16,9 @@
 - [網頁資料擷取](01-web-scraping-101.slides.html)
 - [NumPy 101](02-numpy-101.slides.html)
 - [Pandas 101](03-pandas-101.slides.html)
-- [Pandas 專題](04-pandas-data-wrangling.slides.html)
-- [Matplotlib 101](05-matplotlib-101.slides.html)
+- [Pandas 102](04-pandas-102.slides.html)
+- [Pandas 專題](05-pandas-data-wrangling.slides.html)
+- [Matplotlib 101](06-matplotlib-101.slides.html)
 
 ## 延伸閱讀
 
