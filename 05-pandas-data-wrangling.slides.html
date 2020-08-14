@@ -13231,19 +13231,11 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#22823;&#32177;">&#22823;&#32177;<a class="anchor-link" href="#&#22823;&#32177;">&#182;</a></h2><ul>
-<li>觀察處理前資料</li>
 <li>盤點單張試算表處理步驟</li>
 <li>盤點多張試算表處理步驟</li>
 <li>輸出</li>
 </ul>
 
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#35264;&#23519;&#34389;&#29702;&#21069;&#36039;&#26009;">&#35264;&#23519;&#34389;&#29702;&#21069;&#36039;&#26009;<a class="anchor-link" href="#&#35264;&#23519;&#34389;&#29702;&#21069;&#36039;&#26009;">&#182;</a></h2>
 </div>
 </div>
 </div></section></section><section><section>
@@ -15153,7 +15145,28 @@ a.anchor-link {
 <h2 id="&#22402;&#30452;&#21512;&#20341;-22-&#20491;&#36039;&#26009;&#26694;">&#22402;&#30452;&#21512;&#20341; 22 &#20491;&#36039;&#26009;&#26694;<a class="anchor-link" href="#&#22402;&#30452;&#21512;&#20341;-22-&#20491;&#36039;&#26009;&#26694;">&#182;</a></h2>
 </div>
 </div>
-</div><div class="fragment">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">presidential_votes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">df_dict</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">candidate_infos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;town&#39;</span><span class="p">,</span> <span class="s1">&#39;village&#39;</span><span class="p">,</span> <span class="s1">&#39;office&#39;</span><span class="p">],</span> <span class="n">value_vars</span><span class="o">=</span><span class="n">candidate_infos</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;candidate_info&quot;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;votes&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;county&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
+    <span class="n">presidential_votes</span> <span class="o">=</span> <span class="n">presidential_votes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">presidential_votes</span> <span class="o">=</span> <span class="n">presidential_votes</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
@@ -15271,7 +15284,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
@@ -15377,7 +15390,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15509,10 +15522,32 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#38568;&#22530;&#32244;&#32722;&#65306;&#26032;&#22686;&#12300;&#25919;&#40680;&#12301;">&#38568;&#22530;&#32244;&#32722;&#65306;&#26032;&#22686;&#12300;&#25919;&#40680;&#12301;<a class="anchor-link" href="#&#38568;&#22530;&#32244;&#32722;&#65306;&#26032;&#22686;&#12300;&#25919;&#40680;&#12301;">&#182;</a></h2>
+<h2 id="&#26032;&#22686;&#12300;&#25919;&#40680;&#12301;">&#26032;&#22686;&#12300;&#25919;&#40680;&#12301;<a class="anchor-link" href="#&#26032;&#22686;&#12300;&#25919;&#40680;&#12301;">&#182;</a></h2>
 </div>
 </div>
-</div><div class="fragment">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_party</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="n">party</span> <span class="o">=</span> <span class="s1">&#39;親民黨&#39;</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
+        <span class="n">party</span> <span class="o">=</span> <span class="s1">&#39;中國國民黨&#39;</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+        <span class="n">party</span> <span class="o">=</span> <span class="s1">&#39;民主進步黨&#39;</span>
+    <span class="k">return</span> <span class="n">party</span>
+
+<span class="n">presidential_votes</span><span class="p">[</span><span class="s1">&#39;party&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">presidential_votes</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_party</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
@@ -15636,7 +15671,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -15797,7 +15832,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
